@@ -9,8 +9,8 @@
 #ifndef  STM32F103xx_H_
 #define  STM32F103xx_H_
 
-/******************************** RCC Registers **************************************/
-#define RCC_u32_BASE_ADDRESS                               0x40021000
+/********************** RCC Registers ********************/
+#define RCC_u32_BASE_ADDRESS    0x40021000
 
 typedef struct
 {
@@ -51,6 +51,7 @@ typedef struct
 
 
 /**************************************************************************************/
+
 /******************************** SYSTICK Registers ***********************************/
 
 #define STK_u32_BASE_ADDRESS                                0xE000E010U
@@ -82,6 +83,23 @@ typedef struct
 
 #define NVIC                                  ((NVIC_RegDef_t*)NVIC_u32_BASE_ADDRESS)
 #define SCB_AIRCR                             (*(volatile u32*)(0xE000ED0C))
+
+/**************************************************************************************/
+/******************************** EXTI Registers ***********************************/
+
+#define EXTI_u32_BASE_ADDRESS                                0x40010400U
+
+typedef struct
+{
+	volatile u32 IMR;
+	volatile u32 EMR;
+	volatile u32 RTSR;
+	volatile u32 FTSR;
+	volatile u32 SWIER;
+	volatile u32 PR;
+}EXTI_RegDef_t;
+
+#define EXTI                                  ((EXTI_RegDef_t*)EXTI_u32_BASE_ADDRESS)
 
 /**************************************************************************************/
 #endif
